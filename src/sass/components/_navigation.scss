@@ -1,0 +1,133 @@
+.nav {
+  position: relative;
+  padding: 2em 0 0.5em;
+  align-items: center;
+  z-index: 10;
+}
+
+.nav .logo {
+  flex: 1 1 0;
+  align-self: flex-start;
+
+  a {
+    display: inline-block;
+  }
+}
+
+.nav .list {
+  flex: 1 1 0;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+
+.nav .list .item {
+  display: inline-block;
+  padding: 0 40px;
+  letter-spacing: 0.5px;
+  font-size: 1.8rem;
+  transition: color 250ms ease;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $primary-text;
+  }
+}
+
+// LOGO //
+nav svg {
+
+  transition: all 200ms ease-in-out;
+
+  &:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+
+  animation-name: expandUp;
+  -webkit-animation-name: expandUp;
+
+  animation-duration: 1s;
+
+  animation-timing-function: ease;
+  -webkit-animation-timing-function: ease;
+
+  visibility: visible !important;
+
+  width: 75px;
+  height: 100px;
+
+  path {
+    stroke-dasharray: 50;
+    stroke-dashoffset: 0;
+    animation: pathReveal 0.75s linear;
+
+    &.line {
+      stroke: #5e9eff;
+      stroke-width: 5;
+      stroke-opacity: 1;
+      animation: lineReveal 0.75s linear;
+
+    }
+
+    &.node:nth-child(n+2) {
+      animation: pathReveal 0.75s linear, nodeReveal 1s ease-in-out 1s forwards;
+      fill: $primary-logo;
+    }
+  }
+
+}
+
+// LOGO ANIMATION //
+@keyframes expandUp {
+	0% {
+		transform: translateY(100%) scale(0.6) scaleY(0.5);
+	}
+	60%{
+		transform: translateY(-7%) scaleY(1.12);
+	}
+	75%{
+		transform: translateY(3%);
+	}
+	100% {
+		transform: translateY(0%) scale(1) scaleY(1);
+	}
+}
+
+@keyframes nodeReveal {
+  0% {
+    stroke-width: $logo-stroke;
+    fill-opacity: 0;
+  }
+
+  50% {
+    stroke-width: $logo-stroke*1.75;
+    fill-opacity: 1;
+  }
+
+  100% {
+    stroke-width: $logo-stroke;
+    fill-opacity: 1;
+  }
+}
+
+@keyframes pathReveal {
+  from {
+    stroke-dashoffset: 50;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes lineReveal {
+  from {
+    stroke-dashoffset: 50;
+    fill-opacity: 0;
+  }
+  to {
+    stroke-dashoffset: 0;
+    fill-opacity: 1;
+  }
+}

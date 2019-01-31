@@ -11,11 +11,13 @@ const imagemin = require('gulp-imagemin')
 const plumber  = require('gulp-plumber')
 const postcss  = require('gulp-postcss')
 const sass     = require('gulp-sass')
+const size     = require('gulp-size')
 const maps     = require('gulp-sourcemaps')
 const notifier = require('node-notifier')
 const rollup   = require('rollup')
 const babel    = require('rollup-plugin-babel')
 const commonjs = require('rollup-plugin-commonjs')
+const filesize = require('rollup-plugin-filesize')
 const resolve  = require('rollup-plugin-node-resolve')
 const uglify   = require('rollup-plugin-uglify')
 const rucksack = require('rucksack-css')
@@ -32,24 +34,26 @@ const onError = function(error) {
   this.emit('end')
 }
 
+// size reporting options
+
+const sizes = {
+  gzip: false,
+  pretty: true,
+  showFiles: true
+}
+
 // clean
 
 gulp.task('clean', () => del('dist'))
-
-gulp.task('html-includes', () => {
-  return gulp.src('src/html/includes/**/*.html')
-    .pipe(plumber({ errorHandler: onError }))
-    .pipe(htmlmin({ collapseWhitespace: true, removeComments: true }))
-    .pipe(gulp.dest('dist/includes'))
-})
 
 // html
 
 gulp.task('html', ['images'], () => {
   return gulp.src('src/html/**/*.html')
     .pipe(plumber({ errorHandler: onError }))
-    .pipe(include({ prefix: '@', basepath: 'dist/' }))
+    .pipe(include({ prefix: '@', basepath: 'src/' }))
     .pipe(htmlmin({ collapseWhitespace: true, removeComments: true }))
+    .pipe(size(sizes))
     .pipe(gulp.dest('dist'))
 })
 
@@ -67,6 +71,7 @@ gulp.task('sass', () => {
     .pipe(maps.init())
     .pipe(sass())
     .pipe(postcss(processors))
+    .pipe(size(sizes))
     .pipe(maps.write('./maps', { addComment: false }))
     .pipe(gulp.dest('dist'))
 })
@@ -74,32 +79,46 @@ gulp.task('sass', () => {
 // js
 
 const read = {
-  entry: 'src/js/main.js',
-  sourceMap: true,
+  input: 'src/js/main.js',
+  output: {
+    sourcemap: true
+  },
   plugins: [
     resolve({ jsnext: true, main: true }),
     commonjs(),
-    babel({ exclude: 'node_modules/**' }),
-    uglify()
+    babel({
+      babelrc: false,
+      presets: [
+        [
+          '@babel/preset-env', {
+            modules: false,
+            targets: {
+              browsers: ['last 2 versions']
+            }
+          }
+        ]
+      ],
+      plugins: [
+
+      ]
+    }),
+    uglify(),
+    filesize()
   ]
 }
 
 const write = {
+  file: 'dist/bundle.js',
   format: 'iife',
-  sourceMap: true
+  sourcemap: true,
+  output: {
+    name: 'bundle'
+  }
 }
 
-gulp.task('js', () => {
-  return rollup
-    .rollup(read)
-    .then(bundle => {
-      // generate the bundle
-      const files = bundle.generate(write)
-
-      // write the files to dist
-      fs.writeFileSync('dist/bundle.js', files.code)
-      fs.writeFileSync('dist/maps/bundle.js.map', files.map.toString())
-    })
+gulp.task('js', async () => {
+  const bundle = await rollup.rollup(read)
+  await bundle.write(write)
 })
 
 // images
@@ -109,6 +128,7 @@ gulp.task('images', () => {
     .pipe(plumber({ errorHandler: onError }))
     .pipe(changed('dist/images'))
     .pipe(imagemin({ progressive: true, interlaced: true }))
+    .pipe(size(sizes))
     .pipe(gulp.dest('dist/images'))
 })
 
@@ -186,7 +206,7 @@ gulp.task('build', ['clean'], () => {
   fs.mkdirSync('dist/maps')
 
   // run the tasks
-  gulp.start('html-includes', 'html', 'sass', 'js', 'images', 'fonts', 'videos', 'favicon')
+  gulp.start('html', 'sass', 'js', 'images', 'fonts', 'videos', 'favicon')
 })
 
 gulp.task('default', ['build', 'server', 'watch'])

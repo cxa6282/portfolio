@@ -6,10 +6,12 @@ html {
 }
 
 body {
-  // font-family: ;
-  // font-weight: ;
-  // font-size: ;
-  line-height: 1.3;
+  font-family: $sans;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.8;
+  color: $base-text;
+  -webkit-font-smoothing: antialiased;
 }
 
 // LAYOUT
@@ -19,4 +21,12 @@ body {
   max-width: $site-width;
   margin-right: auto;
   margin-left: auto;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+.vertical-center {
+  align-items: center;
 }
