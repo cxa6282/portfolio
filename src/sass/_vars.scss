@@ -3,6 +3,8 @@
 $site-width:  1400px;
 $site-gutter: 5%;
 
+$section-padding: 100px;
+
 // BREAKPOINTS
 
 $tablet:  768px;
@@ -20,12 +22,16 @@ $h2-font-size: 3.8rem;
 
 // COLORS
 
+$bg-light: #fcfcfc;
+$bg-gray: #f7f7f7;
+
 $primary-text: #5e9eff;
 $base-text: #5d5d5d;
+$base-text-light: #fff;
 
 $black: #000;
 $white: #fff;
-$dark-grey: #666;
+$dark-gray: #666;
 
 // LOGO
 

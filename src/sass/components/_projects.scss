@@ -1,0 +1,6 @@
+#projects {
+  @include angle(before, true);
+  @include angle(after);
+  background-color: $bg-gray;
+  padding: $section-padding 0;
+}

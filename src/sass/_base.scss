@@ -11,6 +11,7 @@ body {
   font-size: 1.6rem;
   line-height: 1.8;
   color: $base-text;
+  background-color: $bg-light;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -29,4 +30,16 @@ body {
 
 .vertical-center {
   align-items: center;
+}
+
+section a {
+  color: $primary-text;
+
+  text-decoration: none;
+  
+  &:hover {
+    color: inherit;
+    transition: all 200ms ease-in-out;
+  }
+
 }
