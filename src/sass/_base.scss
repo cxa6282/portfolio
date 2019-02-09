@@ -34,12 +34,15 @@ body {
 
 section a {
   color: $primary-text;
-
   text-decoration: none;
-  
-  &:hover {
+  transition: all 150ms ease;
+  &:hover, &:focus {
     color: inherit;
-    transition: all 200ms ease-in-out;
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+  &:after {
+    transition: all 150ms ease;
   }
 
 }
