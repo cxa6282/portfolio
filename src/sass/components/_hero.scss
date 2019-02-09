@@ -1,6 +1,10 @@
 #hero {
   padding: $section-padding 0;
 
+  @include max($tablet) {
+    padding: $section-padding/2 0;
+  }
+
   .container {
     flex-direction: column;
     align-items: flex-start;
@@ -8,13 +12,23 @@
 
   .hero-primary-title {
     display: block;
-    font-size: 3.5em;
+    font-size: 3em;
     font-weight: 500;
     margin-bottom: .5em;
+
+    @include max($tablet) {
+      font-size: 2em;
+    }
   }
+
   .hero-secondary-title {
     display: block;
-    font-size: 2.5em;
-    width: 75%;
+    font-size: 2em;
+    max-width: 75%;
+
+    @include max($tablet) {
+      font-size: 1.5em;
+      max-width: 100%;
+    }
   }
 }
