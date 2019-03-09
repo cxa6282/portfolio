@@ -3,6 +3,10 @@
   background-color: $primary-logo;
   color: $base-text-light;
 
+  @include max($tablet) {
+    padding: $section-padding/2 0;
+  }
+
   a {
     color: $base-text-light;
     display: inline-block;

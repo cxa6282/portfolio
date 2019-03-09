@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+  <head>
+    <title>Chris Abajian</title>
+    @include("html/includes/_head.html")
+  </head>
+  <body>
+
+    @include("html/includes/_navigation.html")
+
+    <section id="hero" class="project-hero">
+      <div class="container vertical-center">
+        <h1 class="hero-primary-title">Constructing a MIPS Processor in VHDL</h1>
+        <h2 class="hero-secondary-title">An on-going laboratory sequence of implementing a Pipelined MIPS Processor in VHDL and testing on the Basys3 FPGA.</h2>
+      </div>
+    </section>
+
+    <section id="project-info">
+      <div class="container vertical-center">
+        <div class="project-img-wrapper">
+          <img class="project-img" src="images/vhdl-mips/thumb.png" alt="MIPS Processor thumbnail: MIPS pipeline diagram.">
+        </div>
+        <div class="project-text-wrapper">
+          <p class="project-text">A Pipelined MIPS Processor can be broken into five stages, as shown in the diagram above. The stages were completed in weekly or bi-weekly sections, with a report written at the end of each stage.</p>
+        </div>
+        <div class="project-img-wrapper">
+          <img class="project-img" src="images/vhdl-mips/id_waveform.png" alt="MIPS Processor instruction fetch stage.">
+        </div>
+        <div class="project-text-wrapper">
+          <p class="project-text">Using Xilinx Vivado Design Suite, the components created in each stage were developed in VHDL and simulated against a test bench to ensure correct implementation. The waveforms shown above are from the Instruction Decode stage post-implementation timing simulation.</p>
+          <p class="project-text">Stages that could be loaded onto the 16-switch Basys3 FPGA were tested on the board, as well.</p>
+        </div>
+        <div class="project-img-wrapper">
+          <img class="project-img" src="images/vhdl-mips/basys3.png" alt="Basys3 showing execution stage MULTU instruction.">
+        </div>
+        <div class="project-text-wrapper">
+          <p class="project-text">The above shows the board demo of the ALU for the execution stage. The ALU was scaled to 4-bit inputs so that it could be loaded onto the board. In the picture, the MULTU opcode is selected "0110" and the inputs are "0010" and "0011", or 2 times 3. The result, 6, is indicated by the last four LED's ("0110" == 6).</p>
+          <p class="project-text">The Memory Stage is the next stage to develop.</p>
+        </div>
+      </div>
+    </section>
+
+    @include("html/includes/_footer.html")
+
+    <script src="bundle.js"></script>
+  </body>
+</html>
