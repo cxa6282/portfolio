@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+  <head>
+    <title>Chris Abajian</title>
+    @include("html/includes/_head.html")
+  </head>
+  <body>
+
+    @include("html/includes/_navigation.html")
+
+    <section id="hero" class="project-hero">
+      <div class="container vertical-center">
+        <h1 class="hero-primary-title">Web Checkers</h1>
+        <h2 class="hero-secondary-title">A locally-hosted web version of the classic Checkers board game created using the <a href="http://sparkjava.com/">Spark Java Web Framework</a>.</h2>
+      </div>
+    </section>
+
+    <section id="project-info">
+      <div class="container vertical-center">
+        <div class="project-img-wrapper">
+          <img class="project-img" src="images/webcheckers/thumb.png" alt="Web Checkers thumbnail: an active move on a checker board.">
+        </div>
+        <div class="project-text-wrapper">
+          <p class="project-text">Web Checkers was developed as my Intro to Software Engineering term-long project. The project aimed to teach the basics of Agile and OpenUP development approaches, as we worked in a team of 5.</p>
+          <p class="project-text">The assigned materials were a vision document outlining the product owner's requirements, and a simple code base for a Spark webpage.
+        </div>
+        <div class="project-img-wrapper">
+          <img class="project-img" src="images/webcheckers/vision.png" alt="Web Checkers vision document.">
+        </div>
+        <div class="project-text-wrapper">
+          <p class="project-text">While consise, we found the vision document left a lot of room for interpretation of the design. We decided to use state-based behavior to prevent any headaches later on in the event of a misinterpretation with the vision document.</p>
+        </div>
+        <div class="project-img-wrapper">
+          <img class="project-img" src="images/webcheckers/state.png" alt="State diagram for web checkers application flow.">
+        </div>
+      </div>
+    </section>
+
+    @include("html/includes/_footer.html")
+
+    <script src="bundle.js"></script>
+  </body>
+</html>

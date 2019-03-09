@@ -88,3 +88,63 @@
     }
   }
 }
+
+#project-info {
+
+  box-shadow: 0 4px 5px -2px rgba(0,0,0,.1);
+
+  .project-img-wrapper {
+    background-color: $primary-logo;
+    box-shadow: inset 0 0 100px rgba(0,0,0, 0.2),
+                      0 15px 35px 0 rgba(42,51,83,.12),
+                      0 5px 15px rgba(0,0,0,.10);
+    border-radius: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 70%;
+    padding: 50px;
+    margin: 0 auto 100px;
+
+    @include max($tablet) {
+      width: 100%;
+      padding: 25px;
+      margin: 0 auto 50px;
+    }
+
+    .project-img {
+      width: 100%;
+      border-radius: 0.5em;
+      box-shadow: 0 15px 35px 0 rgba(42,51,83,.12),
+                  0 5px 15px rgba(0,0,0,.06);
+    }
+  }
+
+  .project-text {
+    margin: 0 auto 30px;
+    width: 60%;
+    font-size: 1.5em;
+
+    &:only-child {
+      margin: 0 auto 100px;
+    }
+    &:last-of-type {
+      margin: 0 auto 100px;
+    }
+
+    @include max($desktop) {
+      font-size: 1.25em;
+      width: 85%;
+      margin: 0 auto 15px;
+
+      &:only-child {
+        margin: 0 auto 50px;
+      }
+      &:last-of-type {
+        margin: 0 auto 50px;
+      }
+    }
+  }
+
+}
