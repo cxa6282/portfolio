@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+  <head>
+    <title>Chris Abajian</title>
+    @include("html/includes/_head.html")
+  </head>
+  <body>
+
+    @include("html/includes/_navigation.html")
+
+    <section id="hero" class="project-hero">
+      <div class="container vertical-center">
+        <h1 class="hero-primary-title">BLEWeather</h1>
+        <h2 class="hero-secondary-title">A portable, solar powered, bluetooth-enabled Arduino sensor hub.</h2>
+      </div>
+    </section>
+
+    <section id="project-info">
+      <div class="container vertical-center">
+        <div class="project-img-wrapper">
+          <img class="project-img" src="images/bleweather/thumb.png" alt="BLEWeather station picture">
+        </div>
+        <div class="project-text-wrapper">
+          <p class="project-text">This project was completed as part of a Designing Solutions to Global Challenges course in highschool. I ended up getting really into it and even devloped an android application to measure the weather station's sensor values.</p>
+          <p class="project-text">You can see the full instructables writeup <a href="https://www.instructables.com/id/BLEWeather-a-Portable-Bluetooth-Weather-Station" target="_blank">here</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    @include("html/includes/_footer.html")
+
+    <script src="bundle.js"></script>
+  </body>
+</html>

@@ -132,7 +132,7 @@ gulp.task('images', () => {
     .pipe(gulp.dest('dist/images'))
 })
 
-// fonts, videos, favicon
+// fonts, videos, favicon, files
 
 const others = [
   {
@@ -147,6 +147,10 @@ const others = [
     name: 'favicon',
     src:  '/favicon.ico',
     dest: ''
+  }, {
+    name: 'files',
+    src:  '/files/**/*',
+    dest: '/files'
   }
 ]
 
@@ -206,7 +210,7 @@ gulp.task('build', ['clean'], () => {
   fs.mkdirSync('dist/maps')
 
   // run the tasks
-  gulp.start('html', 'sass', 'js', 'images', 'fonts', 'videos', 'favicon')
+  gulp.start('html', 'sass', 'js', 'images', 'fonts', 'videos', 'favicon', 'files')
 })
 
 gulp.task('default', ['build', 'server', 'watch'])
